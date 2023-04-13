@@ -1,4 +1,4 @@
-# SNMs
+# Parallel imaging reconstruction using spatial nulling maps
 This repository provides an implementation of "Parallel imaging reconstruction using spatial nulling maps", accepted by Magnetic Resonance in Medicine in 2023.
 
 ## Suggested Setup 
