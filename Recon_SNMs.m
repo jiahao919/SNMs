@@ -1,8 +1,8 @@
 close all
 clear
-
 addpath('.\utils\')
 addpath('.\ESPIRiT utils\')
+
 %% load kData
 fprintf('Reading and preprocessing data... \n')
 
@@ -75,7 +75,6 @@ tmp_res_im = ifft2c(tmp_res);
 
 
 %% l1 regularization
-                    
 imSize = size(tmp_res_im);
 if length(imSize)>2
     imSize_dyd = [max(2.^ceil(log2(imSize(1:2)))), max(2.^ceil(log2(imSize(1:2)))),imSize(3)];
@@ -95,8 +94,8 @@ if lambda > 0
 end                                                       
 tmp_res = fft2c(tmp_res_im);
 toc
-%% Calculate errors
 
+%% Calculate errors
 recon_slice_2d = ifft2c(tmp_res);
 err_map = tmp_slice_f_2d - recon_slice_2d;
 
@@ -111,12 +110,12 @@ figure('Visible','off');immontage(sos(err_map),[0 .2])
 exportgraphics(gcf,strcat(path,'error x 5.tiff'),'Resolution',300)
 figure('Visible','off');immontage(Null_2d,[0 1])
 exportgraphics(gcf,strcat(path,'positive-definite matrix of sptial nulling maps.tiff'),'Resolution',300)
+
 %% calculate NRMSE and SSIM
 load('.\mask_MSE\brain_mask_mse.mat') % load mask within the object region for caculating metrics                            
 quantitative_measurements = CalcPerf(sos(tmp_slice_f_2d).*mask_mse(:,:,sl_2d),sos(recon_slice_2d).*mask_mse(:,:,sl_2d));quantitative_measurements
 
 %% functions
-
 function [V_null, S, Mac] = est_null_2d(res, kernel_size)
 % Estimate null-space basis of Hankel matrix
 
@@ -127,7 +126,6 @@ Mac = search_ACS_2d(res, kernel_size);
 % [~, ~, V_null] = svd(Mac, 'econ'); 
 
 end
-
 
 function Mac = search_ACS_2d(data, kernel_size)
 % Mac: calibration Matrix constructed from ACS
