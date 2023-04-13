@@ -74,7 +74,7 @@ tmp_res = reshape(subsasgn(tmp_recon, S1, tmp_res),size(tmp_recon)); % Data cons
 tmp_res_im = ifft2c(tmp_res);
 
 
-%% l1 regularization  
+%% l1 regularization
                     
 imSize = size(tmp_res_im);
 if length(imSize)>2
