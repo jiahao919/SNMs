@@ -82,7 +82,7 @@ else
     imSize_dyd = [max(2.^ceil(log2(imSize(1:2)))), max(2.^ceil(log2(imSize(1:2))))];
 end
 
-XOP = Wavelet('Daubechies_TI',4,6);
+XOP = Wavelet('Daubechies_TI',4,4);
 
 if lambda > 0 
     tmp = zpadd(tmp_res_im,imSize_dyd);
